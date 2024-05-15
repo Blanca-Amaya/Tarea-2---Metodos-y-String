@@ -59,6 +59,7 @@ public class Tarea2MétodosYStrings {
                     break;
                 default:
                     System.out.println("Opcion invalida");
+                    respuesta = false;
                     break;
             }
         }
@@ -96,15 +97,18 @@ public class Tarea2MétodosYStrings {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Ingrese n numero: ");
         int numero = scanner.nextInt();
-        String factorialPantalla = "1";
+        System.out.println("El factorial: "+factorial(numero) );
+    }
+    public static String factorial (int numero){
+        String factorialPantalla = "";
         for (int i = 1; i <= numero; i++) {
-            factorialPantalla += " x " + i;
+            factorialPantalla += i + " x ";
         }
         int cont = 1;
         for (int i = 1; i <= numero; i++) {
             cont *= i;
-        }
-        System.out.println("El factorial: " + factorialPantalla + " = " + cont);
+        } factorialPantalla += " = " + cont;
+        return factorialPantalla;
     }
 
     public static void opcion3() {
@@ -141,18 +145,17 @@ public class Tarea2MétodosYStrings {
     }
 
     public static void opcion5() {
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Ingrese nota: ");
-        int nota = scanner.nextInt();
-        boolean aprobado = AproRepro(nota);
-        if (aprobado == true) {
-            System.out.println("El alumno aprobó.");
+        if (AproRepro()) {
+            System.out.println("El alumno aprobo.");
         } else {
-            System.out.println("El alumno reprobó.");
+            System.out.println("El alumno reprobo.");
         }
     }
 
-    public static boolean AproRepro(int nota) {
+    public static boolean AproRepro() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Ingrese nota: ");
+        int nota = scanner.nextInt();
         if (nota >= 60) {
             return true;
         } else {
